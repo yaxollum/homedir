@@ -1,0 +1,11 @@
+import os
+$COMPLETIONS_CONFIRM=True
+$PROMPT='{BOLD_BLUE}{cwd_base}{branch_color}{curr_branch: {}}{RESET} %s{RESET} '%("{BOLD_BLUE}#" if os.getuid()==0 else "{BOLD_BLUE}$")
+$PATH.append('/opt/gcc-arm-10.2-2020.11-x86_64-aarch64-none-linux-gnu/bin')
+$PATH.append('/home/yaxollum/.local/share/gem/ruby/3.0.0/bin')
+$GDK_SCALE=2
+$GDK_DPI_SCALE=0.5
+$CHROME_EXECUTABLE='/usr/bin/google-chrome-stable'
+#$SHELL_TYPE='readline'
+$THREAD_SUBPROCS=False
+$PATH.append('/home/yaxollum/.local/bin')

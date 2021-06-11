@@ -1,0 +1,8 @@
+[user]
+	email = yaxollum@gmail.com
+	name = Peter Ye
+	signingkey = 2D89B82D27D2FC34837EBC93FE5DE7CD0E2FB900
+[commit]
+	gpgsign = true
+[core]
+	autocrlf = input
