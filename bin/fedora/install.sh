@@ -22,3 +22,6 @@ flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flat
 flatpak install flathub org.videolan.VLC com.discordapp.Discord us.zoom.Zoom
 
 xonsh ./flatpak_links.xsh
+
+dnf install google-noto-serif-cjk-ttc-fonts ibus ibus-rime
+
