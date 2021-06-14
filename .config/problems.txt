@@ -1,0 +1,129 @@
+# This is a comment
+# Data file for problem-tracker
+# https://github.com/yaxollum/problem-tracker
+
+# Good luck with this ...
+set problem goal 400 # hello
+set penalty 10
+
+begin 2021-05-22
+begin chapter 11
+add 42-47
+assigned 6 problems
+penalty
+
+begin 2021-05-23
+assigned 6 problems
+finished 6 problems
+need to fix 44,46
+
+begin 2021-05-24 # Victoria Day
+add 48-57
+assigned 8 problems
+finished 1 problem
+penalty
+
+begin 2021-05-25
+assigned 8 problems
+penalty
+
+begin 2021-05-26
+assigned 8 problems
+penalty
+
+begin 2021-05-27
+assigned 8 problems
+penalty
+
+begin 2021-05-28
+assigned 8 problems
+penalty
+
+begin 2021-05-29
+assigned 12 problems
+finished 1 problem
+penalty
+
+begin 2021-05-30
+assigned 12 problems
+penalty
+
+begin 2021-05-31
+assigned 7 problems
+finished 5 problems
+fixed 44,46
+
+begin 2021-06-01
+assigned 6 problems
+need to fix 48,50,54
+add 58-60
+finished 6 problems
+
+begin 2021-06-02
+assigned 6 problems
+need to fix 57
+begin chapter 10
+add 82-91
+finished 6 problems
+
+begin 2021-06-03
+assigned 4 problems
+need to fix 83,85
+penalty
+
+begin 2021-06-04
+assigned 0 problems
+begin chapter 11
+fixed 48,50,54,57
+begin chapter 10
+fixed 83,85
+
+begin 2021-06-05
+assigned 5 problems
+begin chapter 11
+add 61
+penalty
+
+begin 2021-06-06
+assigned 5 problems
+finished 5 problems
+
+begin 2021-06-07
+begin chapter 9
+add 84-96
+assigned 6 problems
+finished 6 problems
+
+begin 2021-06-08
+assigned 5 problems
+finished 5 problems
+
+begin 2021-06-09
+assigned 4 problems
+penalty
+
+begin 2021-06-10
+assigned 4 problems
+finished 2 problems
+need to fix 95,96
+begin chapter 10
+add 92-94
+finished 2 problems
+
+begin 2021-06-11
+assigned 1 problem
+finished 1 problem
+need to fix 94
+
+begin 2021-06-12
+begin chapter 11
+assigned 3 problems
+add 62-64
+penalty
+
+begin 2021-06-13
+assigned 3 problems
+penalty
+
+begin 2021-06-14
+assigned 3 problems
