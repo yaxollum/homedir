@@ -9,3 +9,4 @@ $CHROME_EXECUTABLE='/usr/bin/google-chrome-stable'
 #$SHELL_TYPE='readline'
 $PATH.append('/home/yaxollum/.local/bin')
 $CARGO_INSTALL_ROOT='/home/yaxollum/.local'
+$GPG_TTY=$(tty)
