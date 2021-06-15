@@ -2,9 +2,7 @@
 
 useradd yaxollum -G wheel
 systemctl set-default graphical.target     
-
-dnf update
-dnf install flatpak lightdm xmonad vim alacritty firefox htop
+./dnf.sh
 
 echo 'PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/var/lib/flatpak/exports/bin"' > /etc/environment
 
@@ -13,15 +11,19 @@ cat > /etc/lightdm/lightdm.conf <<EOF
 autologin-user=yaxollum
 EOF
 
-XONSH_LOCATION="/home/yaxollum/dev/xonsh"
-pip install -e $XONSH_LOCATION
-pip install prompt-toolkit
-chsh --shell /usr/local/bin/xonsh yaxollum
+cat > /etc/samba/smb.conf <<EOF
+[global]
+    client min protocol = NT1
+EOF
 
-flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-flatpak install flathub org.videolan.VLC com.discordapp.Discord us.zoom.Zoom
+if ! grep -q "Samba" /etc/fstab; then
+cat >> /etc/fstab <<EOF
+# Samba shares
+//192.168.0.121/_shared /srv/smb/s1 cifs guest,vers=1.0,noauto,x-systemd.automount 0 0
+//192.168.0.121/Volume_2 /srv/smb/s2 cifs guest,vers=1.0,noauto,x-systemd.automount 0 0
+EOF
+fi
 
-xonsh ./flatpak_links.xsh
+./install_xonsh.sh
 
-dnf install google-noto-serif-cjk-ttc-fonts ibus ibus-rime
-
+./flatpak.sh
