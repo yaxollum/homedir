@@ -127,3 +127,4 @@ penalty
 
 begin 2021-06-14
 assigned 3 problems
+finished 3 problems
