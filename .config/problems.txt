@@ -127,3 +127,9 @@ penalty
 
 begin 2021-06-14
 assigned 3 problems
+finished 3 problems
+
+begin 2021-06-15
+assigned 3 problems
+begin chapter 12
+add 59-61
