@@ -133,3 +133,8 @@ begin 2021-06-15
 assigned 3 problems
 begin chapter 12
 add 59-61
+finished 3 problems
+add 58,63-65
+
+begin 2021-06-16
+assigned 4 problems
