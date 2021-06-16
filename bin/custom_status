@@ -1,0 +1,39 @@
+#!/bin/python3
+
+import time
+import json
+import requests
+import getpass
+
+def getWeatherData():
+    data=requests.get("http://api.openweathermap.org/data/2.5/weather?id=6173577&appid=218d67a57fd6c3ba27b12d84f9174c35&units=metric").text
+    decoder=json.JSONDecoder()
+    return decoder.decode(data)
+
+last_update=0
+weather_data={}
+
+while True:
+    unix_time=time.time();
+    if(unix_time-last_update>600):
+        weather_data=getWeatherData()
+        last_update=unix_time
+
+    sunrise_str=time.strftime('%H:%M', time.localtime(weather_data["sys"]["sunrise"]))
+    sunset_str=time.strftime('%H:%M', time.localtime(weather_data["sys"]["sunset"]))
+    conditions=weather_data["weather"][0]["description"]
+    temperature=weather_data["main"]["temp"]
+    wind_speed=weather_data["wind"]["speed"]
+    time_str=time.strftime('%a %Y-%m-%d %H:%M', time.localtime(unix_time))
+    username=getpass.getuser();
+
+    output="%s | %d °C | %.2g m/s | %s | %s | %s "%(
+        conditions,
+        temperature,
+        wind_speed,
+        sunrise_str,
+        sunset_str,
+        time_str)
+
+    print(output,flush=True)
+    time.sleep(0.1)
