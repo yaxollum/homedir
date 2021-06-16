@@ -1,8 +1,10 @@
 #!/bin/bash
 
-useradd yaxollum -G wheel
-systemctl set-default graphical.target     
 ./dnf.sh
+systemctl enable docker
+
+useradd yaxollum -G wheel,docker
+systemctl set-default graphical.target     
 
 echo 'PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/var/lib/flatpak/exports/bin"' > /etc/environment
 
