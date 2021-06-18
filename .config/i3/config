@@ -198,7 +198,7 @@ bindsym $mod+r mode "resize"
 bar {
         strip_workspace_numbers yes
         position top
-        status_command custom_status
+        status_command ~/bin/custom_status
         font pango:DejaVu Sans Mono 14
         tray_output none
 }

@@ -4,36 +4,41 @@ import time
 import json
 import requests
 import getpass
+from pathlib import Path
 
-def getWeatherData():
-    data=requests.get("http://api.openweathermap.org/data/2.5/weather?id=6173577&appid=218d67a57fd6c3ba27b12d84f9174c35&units=metric").text
+def getWeatherData(api_key):
+    url=f"http://api.openweathermap.org/data/2.5/weather?id=6173577&appid={api_key}&units=metric"
+    data=requests.get(url).text
     decoder=json.JSONDecoder()
     return decoder.decode(data)
 
-last_update=0
-weather_data={}
+if __name__=="__main__":
+    last_update=0
 
-while True:
-    unix_time=time.time();
-    if(unix_time-last_update>600):
-        weather_data=getWeatherData()
-        last_update=unix_time
+    with open(Path.home()/".secrets/api/api.openweathermap.org") as key_file:
+        API_KEY=key_file.readline().strip()
 
-    sunrise_str=time.strftime('%H:%M', time.localtime(weather_data["sys"]["sunrise"]))
-    sunset_str=time.strftime('%H:%M', time.localtime(weather_data["sys"]["sunset"]))
-    conditions=weather_data["weather"][0]["description"]
-    temperature=weather_data["main"]["temp"]
-    wind_speed=weather_data["wind"]["speed"]
-    time_str=time.strftime('%a %Y-%m-%d %H:%M', time.localtime(unix_time))
-    username=getpass.getuser();
+    while True:
+        unix_time=time.time();
+        if(unix_time-last_update>600):
+            weather_data=getWeatherData(API_KEY)
+            last_update=unix_time
 
-    output="%s | %d °C | %.2g m/s | %s | %s | %s "%(
-        conditions,
-        temperature,
-        wind_speed,
-        sunrise_str,
-        sunset_str,
-        time_str)
+        sunrise_str=time.strftime('%H:%M', time.localtime(weather_data["sys"]["sunrise"]))
+        sunset_str=time.strftime('%H:%M', time.localtime(weather_data["sys"]["sunset"]))
+        conditions=weather_data["weather"][0]["description"]
+        temperature=weather_data["main"]["temp"]
+        wind_speed=weather_data["wind"]["speed"]
+        time_str=time.strftime('%a %Y-%m-%d %H:%M', time.localtime(unix_time))
+        username=getpass.getuser();
 
-    print(output,flush=True)
-    time.sleep(0.1)
+        output="%s | %d °C | %.2g m/s | %s | %s | %s "%(
+            conditions,
+            temperature,
+            wind_speed,
+            sunrise_str,
+            sunset_str,
+            time_str)
+
+        print(output,flush=True)
+        time.sleep(0.1)
