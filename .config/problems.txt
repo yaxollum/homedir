@@ -138,3 +138,14 @@ add 58,63-65
 
 begin 2021-06-16
 assigned 4 problems
+finished 4 problems
+
+begin 2021-06-17
+begin chapter 13
+add 17-20
+assigned 4 problems
+finished 4 problems
+
+begin 2021-06-18
+assigned 8 problems
+add 21-28
