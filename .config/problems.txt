@@ -148,4 +148,27 @@ finished 4 problems
 
 begin 2021-06-18
 assigned 8 problems
-add 21-28
+add 21-29
+penalty
+
+begin 2021-06-19
+assigned 9 problems
+finished 9 problems
+
+begin 2021-06-20
+add 50-69
+assigned 7 problems
+finished 7 problems
+
+begin 2021-06-21
+assigned 4 problems
+finished 4 problems
+need to fix 57
+
+begin 2021-06-22
+assigned 6 problems
+penalty
+
+begin 2021-06-23
+assigned 6 problems
+finished 6 problems
