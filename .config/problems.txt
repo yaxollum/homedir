@@ -172,3 +172,10 @@ penalty
 begin 2021-06-23
 assigned 6 problems
 finished 6 problems
+
+begin 2021-06-24
+need to fix 64
+add 70-80
+assigned 5 problems
+fixed 64
+finished 5 problems
