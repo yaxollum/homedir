@@ -179,3 +179,19 @@ add 70-80
 assigned 5 problems
 fixed 64
 finished 5 problems
+
+begin 2021-06-25
+assigned 1 problem
+penalty
+
+begin 2021-06-26
+assigned 5 problems
+penalty
+
+begin 2021-06-27
+assigned 5 problems
+penalty
+
+begin 2021-06-28
+assigned 5 problems
+penalty
