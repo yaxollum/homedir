@@ -200,6 +200,7 @@ penalty
 begin 2021-06-29
 # resetting to 400 problems!
 reset remaining
+set penalty 5
 assigned 8 problems
 penalty
 
