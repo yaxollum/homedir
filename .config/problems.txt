@@ -181,7 +181,8 @@ fixed 64
 finished 5 problems
 
 begin 2021-06-25
-assigned 1 problem
+assigned 5 problems
+finished 1 problem
 penalty
 
 begin 2021-06-26
@@ -195,3 +196,85 @@ penalty
 begin 2021-06-28
 assigned 5 problems
 penalty
+
+begin 2021-06-29
+# resetting to 400 problems!
+reset remaining
+assigned 8 problems
+penalty
+
+begin 2021-06-30
+assigned 8 problems
+penalty
+
+begin 2021-07-01
+assigned 8 problems
+penalty
+
+begin 2021-07-02
+assigned 8 problems
+penalty
+
+begin 2021-07-03
+assigned 8 problems
+finished 8 problems
+
+begin 2021-07-04
+begin chapter 14
+add 35-81
+assigned 8 problems
+finished 8 problems
+
+begin 2021-07-05
+assigned 8 problems
+finished 8 problems
+
+begin 2021-07-06
+assigned 8 problems
+finished 8 problems
+
+begin 2021-07-07
+assigned 8 problems
+finished 8 problems
+
+begin 2021-07-08
+assigned 8 problems
+finished 8 problems
+
+begin 2021-07-09
+add 82-87
+assigned 8 problems
+finished 8 problems
+
+begin 2021-07-10
+assigned 5 problems
+finished 5 problems
+
+begin 2021-07-11
+add even 38-48
+assigned 6 problems
+finished 6 problems
+
+begin 2021-07-12
+add even 50-60
+assigned 6 problems
+finished 6 problems
+
+begin 2021-07-13
+add 60-89
+assigned 6 problems
+finished 6 problems
+
+begin 2021-07-14
+assigned 8 problems
+finished 2 problems
+penalty
+
+begin 2021-07-15
+assigned 8 problems
+finished 4 problems
+penalty
+
+begin 2021-07-16
+assigned 8 problems
+finished 2 problems
