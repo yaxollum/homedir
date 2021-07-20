@@ -252,6 +252,7 @@ assigned 5 problems
 finished 5 problems
 
 begin 2021-07-11
+begin chapter 15
 add even 38-48
 assigned 6 problems
 finished 6 problems
@@ -262,7 +263,7 @@ assigned 6 problems
 finished 6 problems
 
 begin 2021-07-13
-add 60-89
+add 61-75
 assigned 6 problems
 finished 6 problems
 
@@ -279,3 +280,18 @@ penalty
 begin 2021-07-16
 assigned 8 problems
 finished 2 problems
+
+begin 2021-07-17
+assigned 8 problems
+add 77-89
+finished 3 problems
+penalty
+
+begin 2021-07-18
+assigned 8 problems
+finished 1 problem
+penalty
+
+begin 2021-07-19
+assigned 8 problems
+finished 4 problems
