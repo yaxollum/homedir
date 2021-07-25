@@ -283,7 +283,7 @@ finished 2 problems
 
 begin 2021-07-17
 assigned 8 problems
-add 77-89
+add 77-87,89
 finished 3 problems
 penalty
 
@@ -295,3 +295,32 @@ penalty
 begin 2021-07-19
 assigned 8 problems
 finished 4 problems
+
+begin 2021-07-20
+assigned 6 problems
+finished 2 problems
+penalty
+
+begin 2021-07-21
+assigned 6 problems
+finished 2 problems
+penalty
+
+begin 2021-07-22
+assigned 5 problems
+finished 1 problem
+# skip problem 88 for now
+
+begin 2021-07-23
+begin chapter 16
+add even 30-50
+assigned 5 problems
+penalty
+
+begin 2021-07-24
+assigned 5 problems
+finished 5 problems
+
+begin 2021-07-25
+assigned 6 problems
+add 51-67
