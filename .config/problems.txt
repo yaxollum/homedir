@@ -323,7 +323,7 @@ finished 5 problems
 
 begin 2021-07-25
 assigned 6 problems
-add 51-67
+add 51-61
 finished 6 problems
 
 begin 2021-07-26
@@ -334,3 +334,31 @@ penalty
 begin 2021-07-27
 assigned 7 problems
 finished 4 problems
+
+begin 2021-07-28
+assigned 7 problems
+finished 2 problems
+penalty
+
+begin 2021-07-29
+assigned 7 problems
+add 63-67
+finished 7 problems
+
+begin 2021-07-30
+assigned 0 problems
+begin chapter 17
+add even 30-54
+
+begin 2021-07-31
+assigned 7 problems
+finished 8 problems
+
+begin 2021-08-01
+assigned 6 problems
+finished 5 problems
+
+begin 2021-08-02
+add 55-73
+assigned 7 problems
+finished 5 problems
