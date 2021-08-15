@@ -9,3 +9,4 @@ fi
 if [ -e /home/yaxollum/.nix-profile/etc/profile.d/nix.sh ]; then . /home/yaxollum/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
 
 export SHELL=/usr/local/bin/xonsh
+setfont -d
