@@ -414,10 +414,12 @@ assigned 7 problems
 finished 7 problems
 
 begin 2021-08-15
-assigned 3 problems
+assigned 4 problems
 begin chapter 9
 add 57
 add 1095 # special: problem 95 added again
 begin chapter 13
 add 1001 # special: deriving Kepler's Third Law
-finished 3 problems
+begin chapter 6
+add 1001 # special: calculating the centripetal acceleration on the equator
+finished 4 problems
