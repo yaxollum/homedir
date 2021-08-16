@@ -3,7 +3,6 @@
 import time
 import json
 import requests
-import getpass
 from pathlib import Path
 
 def getWeatherData(api_key):
@@ -21,24 +20,28 @@ if __name__=="__main__":
     while True:
         unix_time=time.time();
         if(unix_time-last_update>600):
-            weather_data=getWeatherData(API_KEY)
+            try:
+                weather_data=getWeatherData(API_KEY)
+            except Exception:
+                weather_data="Could not connect to api.openweathermap.org"
             last_update=unix_time
 
-        sunrise_str=time.strftime('%H:%M', time.localtime(weather_data["sys"]["sunrise"]))
-        sunset_str=time.strftime('%H:%M', time.localtime(weather_data["sys"]["sunset"]))
-        conditions=weather_data["weather"][0]["description"]
-        temperature=weather_data["main"]["temp"]
-        wind_speed=weather_data["wind"]["speed"]
         time_str=time.strftime('%a %Y-%m-%d %H:%M', time.localtime(unix_time))
-        username=getpass.getuser();
-
-        output="%s | %d °C | %.2g m/s | %s | %s | %s "%(
-            conditions,
-            temperature,
-            wind_speed,
-            sunrise_str,
-            sunset_str,
-            time_str)
+        if not isinstance(weather_data,str):
+            sunrise_str=time.strftime('%H:%M', time.localtime(weather_data["sys"]["sunrise"]))
+            sunset_str=time.strftime('%H:%M', time.localtime(weather_data["sys"]["sunset"]))
+            conditions=weather_data["weather"][0]["description"]
+            temperature=weather_data["main"]["temp"]
+            wind_speed=weather_data["wind"]["speed"]
+            output="%s | %d °C | %.2g m/s | %s | %s | %s "%(
+                conditions,
+                temperature,
+                wind_speed,
+                sunrise_str,
+                sunset_str,
+                time_str)
+        else:
+            output="%s | %s "%(weather_data,time_str)
 
         print(output,flush=True)
         time.sleep(0.1)
