@@ -412,3 +412,12 @@ finished 7 problems
 begin 2021-08-14
 assigned 7 problems
 finished 7 problems
+
+begin 2021-08-15
+assigned 3 problems
+begin chapter 9
+add 57
+add 1095 # special: problem 95 added again
+begin chapter 13
+add 1001 # special: deriving Kepler's Third Law
+finished 3 problems
