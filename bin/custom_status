@@ -17,13 +17,19 @@ if __name__=="__main__":
     with open(Path.home()/".secrets/api/api.openweathermap.org") as key_file:
         API_KEY=key_file.readline().strip()
 
+    COULD_NOT_CONNECT="Could not connect to api.openweathermap.org"
+    REGULAR_UPDATE_INTERVAL=600 # 10 minutes
+    ERROR_UPDATE_INTERVAL=2 # 2 seconds
+
     while True:
         unix_time=time.time();
-        if(unix_time-last_update>600):
+        if(unix_time-last_update>REGULAR_UPDATE_INTERVAL or 
+                (weather_data==COULD_NOT_CONNECT and 
+                    unix_time-last_update>ERROR_UPDATE_INTERVAL)):
             try:
                 weather_data=getWeatherData(API_KEY)
             except Exception:
-                weather_data="Could not connect to api.openweathermap.org"
+                weather_data=COULD_NOT_CONNECT
             last_update=unix_time
 
         time_str=time.strftime('%a %Y-%m-%d %H:%M', time.localtime(unix_time))
