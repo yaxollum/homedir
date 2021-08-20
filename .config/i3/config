@@ -207,5 +207,9 @@ bar {
 # gaps outer 5 
 #for_window [class="^.*"] border pixel 0
 exec --no-startup-id uamdmshd
+exec --no-startup-id xsetroot
+exec --no-startup-id fcitx5 -d
+exec --no-startup-id xset s off -dpms
+
 #exec --no-startup-id hsetroot -fill ~/.wallpaper.png
 #exec --no-startup-id i3-msg workspace "abc"
