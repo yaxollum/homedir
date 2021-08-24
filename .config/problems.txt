@@ -423,3 +423,27 @@ add 1001 # special: deriving Kepler's Third Law
 begin chapter 6
 add 1001 # special: calculating the centripetal acceleration on the equator
 finished 4 problems
+
+# Assigned no problems these days
+begin 2021-08-16
+begin 2021-08-17
+begin 2021-08-18
+begin 2021-08-19
+begin 2021-08-20
+begin 2021-08-21
+
+begin 2021-08-22
+assigned 0 problems
+begin chapter 9
+add 1002-1005 # special: 4 problems from a separate worksheet
+begin chapter 23
+add even 58-90
+finished 1 problem
+
+begin 2021-08-23
+assigned 4 problems
+finished 3 problems
+
+begin 2021-08-24
+assigned 5 problems
+finished 5 problems
