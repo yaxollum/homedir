@@ -447,3 +447,21 @@ finished 3 problems
 begin 2021-08-24
 assigned 5 problems
 finished 5 problems
+
+begin 2021-08-25
+assigned 7 problems
+finished 7 problems
+
+begin 2021-08-26
+assigned 5 problems
+finished 5 problems
+
+begin 2021-08-27
+begin chapter 24
+add even 48-68
+assigned 5 problems
+finished 5 problems
+
+begin 2021-08-28
+assigned 6 problems
+finished 6 problems
