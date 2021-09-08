@@ -1,4 +1,7 @@
 This is a list of software from outside the Fedora repositories that I use:
 
 https://github.com/pdewacht/brlaser
+    Brother MFC-7460DN, using brlaser v6 (grayscale, 2-sided printing)
+    Connection: http://192.168.0.88/ipp
+
 https://github.com/null-dev/firefox-profile-switcher-connector
