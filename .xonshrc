@@ -13,3 +13,6 @@ $GPG_TTY=$(tty)
 $XONSH_HISTORY_BACKEND = 'sqlite'
 $EDITOR='vi'
 $XONSH_CTRL_BKSP_DELETION=True
+
+# For rime-install (https://github.com/rime/plum) to work properly with fcitx5:
+$rime_dir="$HOME/.local/share/fcitx5/rime"
