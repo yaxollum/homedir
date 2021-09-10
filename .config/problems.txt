@@ -513,3 +513,15 @@ finished 7 problems
 begin 2021-09-07
 assigned 6 problems
 finished 6 problems
+
+begin 2021-09-08
+set penalty 0 # school starts 2021-09-09
+begin chapter 9
+add 1101-1104 # special: 4 problems from a separate worksheet
+assigned 4 problems
+finished 1 problem
+penalty
+
+begin 2021-09-09
+assigned 4 problems
+finished 3 problems
