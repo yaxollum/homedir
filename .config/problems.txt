@@ -525,3 +525,29 @@ penalty
 begin 2021-09-09
 assigned 4 problems
 finished 3 problems
+
+begin 2021-09-10
+
+begin 2021-09-11
+begin chapter 28
+# special: 7 electricity problems selected from various chapters
+add 1001-1007
+assigned 7 problems
+finished 7 problems
+
+begin 2021-09-12
+begin chapter 29
+add even 56-80
+
+begin 2021-09-13
+begin 2021-09-14
+begin 2021-09-15
+begin 2021-09-16
+
+begin 2021-09-17
+assigned 13 problems
+finished 13 problems
+
+begin 2021-09-18
+begin chapter 30
+add even 52-76
