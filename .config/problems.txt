@@ -549,5 +549,38 @@ assigned 13 problems
 finished 13 problems
 
 begin 2021-09-18
+begin 2021-09-19
+begin 2021-09-20
+begin 2021-09-21
+begin 2021-09-22
+begin 2021-09-23
+
+begin 2021-09-24
 begin chapter 30
 add even 52-76
+assigned 7 problems
+finished 7 problems
+
+begin 2021-09-25
+set penalty 5
+assigned 6 problems
+finished 2 problems
+penalty
+
+begin 2021-09-26
+assigned 6 problems
+finished 4 problems
+
+begin 2021-09-27
+begin 2021-09-28
+begin 2021-09-29
+begin 2021-09-30
+
+begin 2021-10-01
+begin chapter 31
+add even 52-82
+assigned 3 problems
+finished 3 problems
+
+begin 2021-10-02
+assigned 13 problems
