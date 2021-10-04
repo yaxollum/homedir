@@ -6,7 +6,7 @@ import requests
 from pathlib import Path
 
 def getWeatherData(api_key):
-    url=f"http://api.openweathermap.org/data/2.5/weather?id=6173577&appid={api_key}&units=metric"
+    url=f"https://api.openweathermap.org/data/2.5/weather?id=6173577&appid={api_key}&units=metric"
     data=requests.get(url).text
     decoder=json.JSONDecoder()
     return decoder.decode(data)
