@@ -584,3 +584,16 @@ finished 3 problems
 
 begin 2021-10-02
 assigned 13 problems
+finished 4 problems
+penalty
+
+begin 2021-10-03
+assigned 13 problems
+finished 1 problem
+penalty
+
+begin 2021-10-04
+finished 5 problems
+
+begin 2021-10-05
+finished 1 problem
