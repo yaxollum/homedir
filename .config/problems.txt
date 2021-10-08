@@ -597,3 +597,12 @@ finished 5 problems
 
 begin 2021-10-05
 finished 1 problem
+
+begin 2021-10-06
+finished 1 problem
+
+begin 2021-10-07
+
+begin 2021-10-08
+assigned 13 problems
+finished 1 problem
