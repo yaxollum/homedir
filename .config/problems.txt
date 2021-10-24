@@ -606,3 +606,38 @@ begin 2021-10-07
 begin 2021-10-08
 assigned 13 problems
 finished 1 problem
+
+begin 2021-10-09
+begin 2021-10-10
+begin 2021-10-11
+begin 2021-10-12
+begin 2021-10-13
+begin 2021-10-14
+begin 2021-10-15
+
+begin 2021-10-16
+begin chapter 32
+add even 60-82
+assigned 12 problems
+finished 3 problems
+penalty
+
+begin 2021-10-17
+assigned 12 problems
+finished 2 problems
+penalty
+
+begin 2021-10-18
+begin 2021-10-19
+
+begin 2021-10-20
+finished 1 problem
+
+begin 2021-10-21
+finished 3 problems
+
+begin 2021-10-22
+
+begin 2021-10-23
+assigned 12 problems
+finished 3 problems
