@@ -1,0 +1,9 @@
+[Unit]
+Description=Run ydns.io update
+
+[Service]
+Type=simple
+ExecStart=/root/ydns_updater.sh
+
+[Install]
+WantedBy=default.target
