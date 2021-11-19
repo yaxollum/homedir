@@ -39,10 +39,16 @@ K=39.1
 Ca=40.08
 
 import math
-from math import radians,sqrt
+from math import degrees,radians,sqrt,pi
 def sin(x):
     return math.sin(radians(x))
 def cos(x):
     return math.cos(radians(x))
 def tan(x):
     return math.tan(radians(x))
+def asin(x):
+    return degrees(math.asin(x))
+def acos(x):
+    return degrees(math.acos(x))
+def atan(x):
+    return degrees(math.atan(x))
