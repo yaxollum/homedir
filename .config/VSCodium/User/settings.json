@@ -1,0 +1,16 @@
+{
+    "workbench.colorTheme": "Solarized Light",
+    "editor.fontSize": 17,
+    "editor.fontFamily": "DejaVu Sans Mono",
+    "editor.minimap.enabled": false,
+    "editor.renderWhitespace": "none",
+    "clangd.path": "/home/yaxollum/.config/VSCodium/User/globalStorage/llvm-vs-code-extensions.vscode-clangd/install/12.0.1/clangd_12.0.1/bin/clangd",
+    "editor.formatOnSave": true,
+    "workbench.editor.enablePreview": false,
+    "editor.wordWrap": "on",
+    "[python]": {
+        "editor.codeActionsOnSave": {
+            "source.organizeImports": true
+        }
+    }
+}
