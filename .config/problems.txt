@@ -606,3 +606,89 @@ begin 2021-10-07
 begin 2021-10-08
 assigned 13 problems
 finished 1 problem
+
+begin 2021-10-09
+begin 2021-10-10
+begin 2021-10-11
+begin 2021-10-12
+begin 2021-10-13
+begin 2021-10-14
+begin 2021-10-15
+
+begin 2021-10-16
+begin chapter 32
+add even 60-82
+assigned 12 problems
+finished 3 problems
+penalty
+
+begin 2021-10-17
+assigned 12 problems
+finished 2 problems
+penalty
+
+begin 2021-10-18
+begin 2021-10-19
+
+begin 2021-10-20
+finished 1 problem
+
+begin 2021-10-21
+finished 3 problems
+
+begin 2021-10-22
+
+begin 2021-10-23
+assigned 12 problems
+finished 3 problems
+
+begin 2021-10-24
+begin 2021-10-25
+begin 2021-10-26
+begin 2021-10-27
+
+begin 2021-10-28
+add odd 65-83
+
+begin 2021-10-29
+finished 1 problem
+
+begin 2021-10-30
+assigned 10 problems
+finished 4 problems
+penalty
+
+begin 2021-10-31
+assigned 10 problems
+finished 5 problems
+
+begin 2021-11-01
+begin 2021-11-02
+begin 2021-11-03
+begin 2021-11-04
+
+begin 2021-11-05
+begin chapter 33
+add even 58-80 skipping 74
+
+begin 2021-11-06
+assigned 11 problems
+finished 2 problems
+penalty
+
+begin 2021-11-07
+assigned 11 problems
+finished 9 problems
+
+begin 2021-11-08
+begin 2021-11-09
+begin 2021-11-10
+begin 2021-11-11
+begin 2021-11-12
+begin 2021-11-13
+begin 2021-11-14
+begin 2021-11-15
+
+begin 2021-11-16
+begin chapter 34
+add odd 21-79 # assigned 15 problems this week
