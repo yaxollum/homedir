@@ -1,0 +1,18 @@
+#!/bin/bash
+
+if [ $# -ne 1 ]
+then
+    echo Expected one argument.
+    exit
+fi
+
+cargo new $1
+cd $1
+echo 'dmoj = "0.1.5"' >> Cargo.toml
+cat > src/main.rs << EOF
+use dmoj::scan;
+
+fn main() {
+    
+}
+EOF
