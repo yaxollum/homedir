@@ -784,3 +784,47 @@ finished 4 problems
 begin 2021-12-21
 set problem goal 130
 reset remaining
+begin chapter 33
+add odd 73-81
+assigned 5 problems
+finished 2 problems
+penalty
+
+begin 2021-12-22
+assigned 5 problems
+finished 3 problems
+
+begin 2021-12-23
+assigned 5 problems
+begin chapter 34
+add even 70-78
+finished 1 problem
+penalty
+
+begin 2021-12-24
+assigned 5 problems
+finished 3 problems
+penalty
+
+begin 2021-12-25
+assigned 5 problems
+finished 1 problem
+
+begin 2021-12-26
+add 2001-2009
+assigned 9 problems
+finished 9 problems
+
+begin 2021-12-27
+
+begin 2021-12-28
+add 3001-3006
+assigned 6 problems
+finished 6 problems
+
+begin 2021-12-29
+
+begin 2021-12-30
+add 4001-4005
+assigned 5 problems
+finished 5 problems
