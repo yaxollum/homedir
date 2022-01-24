@@ -1,0 +1,26 @@
+#!/bin/bash
+
+if [ $# -ne 1 ]
+then
+    echo Expected one argument.
+    exit
+fi
+
+set -e
+mkdir $1
+cd $1
+cat > main.cc << EOF
+#include <bits/stdc++.h>
+
+using namespace std;
+
+typedef int64_t i64;
+typedef double f64;
+
+int main() {
+  cin.sync_with_stdio(0);
+  cin.tie(0);
+
+  return 0;
+}
+EOF
