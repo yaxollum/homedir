@@ -27,5 +27,10 @@
   "python.formatting.provider": "black",
   "typescript.format.semicolons": "remove",
   "editor.formatOnSave": true,
-  "update.mode": "manual"
+  "update.mode": "manual",
+  "editor.unicodeHighlight.ambiguousCharacters": false,
+  "files.hotExit": "off",
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
 }
