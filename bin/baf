@@ -16,6 +16,11 @@ using namespace std;
 
 typedef int64_t i64;
 typedef double f64;
+typedef int8_t flag;
+
+const i64 MOD = 1000000007;
+const i64 INF = 0x3f3f3f3f3f3f3f3f;
+const i64 NEG_INF = -INF;
 
 int main() {
   cin.sync_with_stdio(0);
