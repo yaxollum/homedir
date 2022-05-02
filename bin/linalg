@@ -1,0 +1,3 @@
+#!/bin/bash
+
+okular ~/Downloads/resources/lin/lin_algebra.pdf
