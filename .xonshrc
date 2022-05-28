@@ -19,3 +19,5 @@ $XONSH_CTRL_BKSP_DELETION=True
 $rime_dir="$HOME/.local/share/fcitx5/rime"
 
 aliases['vi']='vimx'
+
+source .xx
