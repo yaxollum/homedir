@@ -1,6 +1,7 @@
 import os
+from math import *
 $COMPLETIONS_CONFIRM=True
-$PROMPT='{BOLD_BLUE}{cwd_base}{branch_color}{curr_branch: {}}{RESET} %s{RESET} '%("{BOLD_BLUE}#" if os.getuid()==0 else "{BOLD_BLUE}$")
+$PROMPT='{BOLD_BLUE}{cwd_base}{branch_color}{curr_branch: {}}{RESET} {RED}{last_return_code_if_nonzero:[{BOLD_INTENSE_RED}{}{RED}] }{RESET}{BOLD_BLUE}{prompt_end}{RESET} '
 $PATH.append('/opt/gcc-arm-10.2-2020.11-x86_64-aarch64-none-linux-gnu/bin')
 $PATH.append('/home/yaxollum/.local/share/gem/ruby/3.0.0/bin')
 $PATH.append('~/bin')
@@ -20,4 +21,4 @@ $rime_dir="$HOME/.local/share/fcitx5/rime"
 
 aliases['vi']='vimx'
 
-source .xx
+source ~/.xx
