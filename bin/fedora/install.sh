@@ -26,6 +26,15 @@ cat >> /etc/fstab <<EOF
 EOF
 fi
 
+cat > /usr/share/xsessions/qtile.desktop <<EOF
+[Desktop Entry]
+Name=Qtile
+Comment=Qtile Session
+Exec=qtile start
+Type=Application
+Keywords=wm;tiling
+EOF
+
 ./install_xonsh.sh
 
 ./flatpak.sh
