@@ -7,14 +7,10 @@ ppa=lambda expr: pprint_ast(ast.parse(expr))
 xppa=lambda expr: pprint_ast(__xonsh__.execer.parser.parse(expr))
 $COMPLETIONS_CONFIRM=True
 $PROMPT='{BOLD_BLUE}{cwd_base}{branch_color}{curr_branch: {}}{RESET} {RED}{last_return_code_if_nonzero:[{BOLD_INTENSE_RED}{}{RED}] }{RESET}{BOLD_BLUE}{prompt_end}{RESET} '
-$PATH.append('/opt/gcc-arm-10.2-2020.11-x86_64-aarch64-none-linux-gnu/bin')
-$PATH.append('/home/yaxollum/.local/share/gem/ruby/3.0.0/bin')
-$PATH.append('~/bin')
 $GDK_SCALE=2
 $GDK_DPI_SCALE=0.5
 $CHROME_EXECUTABLE='/usr/bin/google-chrome-stable'
 #$SHELL_TYPE='readline'
-$PATH.append('/home/yaxollum/.local/bin')
 $CARGO_INSTALL_ROOT='/home/yaxollum/.local'
 $GPG_TTY=$(tty)
 $XONSH_HISTORY_BACKEND = 'sqlite'
