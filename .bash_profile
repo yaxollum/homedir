@@ -16,5 +16,5 @@ export GTK_IM_MODULE=fcitx5
 export QT_IM_MODULE=fcitx5
 export XMODIFIERS='@im=fcitx5'
 
-PATH=$PATH:~/bin:~/.local/bin:~/.local/share/gem/ruby/3.0.0/bin
+PATH=$PATH:~/bin:~/.local/bin:~/.local/share/gem/ruby/3.0.0/bin:~/dev/xonsh/venv/bin
 export SHELL=~/dev/xonsh/venv/bin/xonsh
