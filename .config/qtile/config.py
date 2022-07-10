@@ -24,7 +24,7 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-from libqtile import bar, layout, widget
+from libqtile import bar, layout, widget, extension
 from libqtile.config import Click, Drag, Group, Key, Match, Screen
 from libqtile.lazy import lazy
 from libqtile.utils import guess_terminal
@@ -70,7 +70,15 @@ keys = [
     Key([mod], "w", lazy.window.kill(), desc="Kill focused window"),
     Key([mod, "control"], "r", lazy.reload_config(), desc="Reload the config"),
     Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
-    Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
+    Key([mod], "d", lazy.run_extension(extension.DmenuRun(
+        dmenu_prompt=">",
+        dmenu_font="Andika-8",
+        background="#15181a",
+        foreground="#00ff00",
+        selected_background="#079822",
+        selected_foreground="#fff",
+        #dmenu_height=24,  # Only supported by some dmenu forks
+    ))),
 ]
 
 group_pairs=[("2","parenright"),("4","plus"),("6","bracketright"),("8","exclam"),("10","asterisk")]
