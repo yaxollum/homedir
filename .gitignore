@@ -1,5 +1,7 @@
 *
 !/bin
 !/bin/**
+!/.config
 !/.config/qtile
 !/.config/qtile/**
+__pycache__
