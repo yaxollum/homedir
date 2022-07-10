@@ -1,3 +1,5 @@
 *
 !/bin
 !/bin/**
+!/.config/qtile
+!/.config/qtile/**

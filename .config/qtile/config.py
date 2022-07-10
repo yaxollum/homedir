@@ -24,10 +24,13 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-from libqtile import bar, layout, widget, extension
+from libqtile import bar, layout, widget, extension, hook
 from libqtile.config import Click, Drag, Group, Key, Match, Screen
 from libqtile.lazy import lazy
 from libqtile.utils import guess_terminal
+
+from pathlib import Path
+import subprocess
 
 mod = "mod1"
 terminal = guess_terminal()
@@ -80,6 +83,10 @@ keys = [
         #dmenu_height=24,  # Only supported by some dmenu forks
     ))),
 ]
+
+@hook.subscribe.startup_once
+def autostart():
+    subprocess.call([Path.home()/'.config/qtile/autostart.sh'])
 
 group_pairs=[("2","parenright"),("4","plus"),("6","bracketright"),("8","exclam"),("10","asterisk")]
 groups = [Group(i) for i,_ in group_pairs]
@@ -151,7 +158,7 @@ screens = [
                 widget.Clock(format="%Y-%m-%d %a %I:%M %p"),
                 widget.QuickExit(),
             ],
-            24,
+            40,
             # border_width=[2, 0, 2, 0],  # Draw top and bottom borders
             # border_color=["ff00ff", "000000", "ff00ff", "000000"]  # Borders are magenta
         ),
