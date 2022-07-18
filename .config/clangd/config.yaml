@@ -1,2 +1,4 @@
+If:
+  PathMatch: .*\.(hpp|cpp|cc)
 CompileFlags:
   Add: [-std=c++17]
