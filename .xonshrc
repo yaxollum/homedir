@@ -21,5 +21,6 @@ $rime_dir="$HOME/.local/share/fcitx5/rime"
 
 aliases['vi']='vimx'
 aliases['cc']='cd && clear'
+aliases['yt']="yt-dlp -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]' --sub-lang 'zh-Hans' --write-subs --convert-subs=srt"
 
 source ~/.xx
