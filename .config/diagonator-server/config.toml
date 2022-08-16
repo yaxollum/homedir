@@ -8,19 +8,23 @@ work_period_minutes = 25
 break_minutes = 5
 
 [[requirements]]
-name = "Name of requirement 1"
-due = "08:30"
+name = "Brush teeth"
+due = "20:00"
 
 [[requirements]]
-name = "Name of requirement 2"
+name = "Wash face"
+due = "20:00"
+
+[[requirements]]
+name = "Prepare bread"
+due = "20:00"
+
+[[requirements]]
+name = "Start flossing"
 due = "20:00"
 
 [[locked_time_ranges]]
 end = "04:30"
 
 [[locked_time_ranges]]
-start = "12:00"
-end = "13:00"
-
-[[locked_time_ranges]]
-start = "22:00"
+start = "21:00"
