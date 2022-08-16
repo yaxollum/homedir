@@ -8,4 +8,7 @@
     "editor.minimap.enabled": false,
     "html.format.enable": false,
     "files.insertFinalNewline": true,
+    "extensions.ignoreRecommendations": true,
+    "files.hotExit": "off",
+    "python.formatting.provider": "black",
 }

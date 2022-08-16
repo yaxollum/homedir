@@ -1,0 +1,26 @@
+diagonator_path = "/home/yaxollum/.local/bin/diagonator"
+diagonator_args = [
+    "--top-margin",
+    "50",
+]
+socket_path = "/tmp/diagonator-server.sock"
+work_period_minutes = 25
+break_minutes = 5
+
+[[requirements]]
+name = "Name of requirement 1"
+due = "08:30"
+
+[[requirements]]
+name = "Name of requirement 2"
+due = "20:00"
+
+[[locked_time_ranges]]
+end = "04:30"
+
+[[locked_time_ranges]]
+start = "12:00"
+end = "13:00"
+
+[[locked_time_ranges]]
+start = "22:00"
