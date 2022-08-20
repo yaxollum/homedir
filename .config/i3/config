@@ -203,7 +203,7 @@ bindsym $mod+c exec code ~/dev/diagonator-server
 bar {
         strip_workspace_numbers yes
         position top
-        status_command i3bar_client.py
+        status_command statusbar-with-logger.py ~/.local/state/status-bar.log
         font pango:DejaVu Sans Mono 14
         tray_output none
 }
