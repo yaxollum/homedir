@@ -27,4 +27,4 @@ due = "20:00"
 end = "04:30"
 
 [[locked_time_ranges]]
-start = "21:00"
+start = "23:00"
