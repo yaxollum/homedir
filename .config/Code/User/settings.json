@@ -10,5 +10,10 @@
     "files.insertFinalNewline": true,
     "extensions.ignoreRecommendations": true,
     "files.hotExit": "off",
+    "[python]": {
+        "editor.codeActionsOnSave": {
+            "source.organizeImports": true
+        }
+    },
     "python.formatting.provider": "black",
 }
