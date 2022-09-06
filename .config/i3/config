@@ -208,7 +208,7 @@ bindsym $mod+c exec code ~/dev/diagonator-server
 bar {
         strip_workspace_numbers yes
         position top
-        status_command statusbar-with-logger.py ~/.local/state/status-bar.log
+        status_command with-logger.py ~/.local/state/status-bar.log custom_status
         font pango:DejaVu Sans Mono 14
         tray_output none
 }
@@ -221,7 +221,7 @@ exec --no-startup-id uamdmshd
 exec --no-startup-id xsetroot
 exec --no-startup-id fcitx5 -d
 exec --no-startup-id xset s off -dpms
-exec --no-startup-id diagonator-server-with-logger.py ~/.local/state/diagonator-server.log
+exec --no-startup-id with-logger.py ~/.local/state/diagonator-server.log diagonator-server
 
 #exec --no-startup-id hsetroot -fill ~/.wallpaper.png
 #exec --no-startup-id i3-msg workspace "abc"
