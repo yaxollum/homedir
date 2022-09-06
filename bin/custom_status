@@ -1,53 +1,154 @@
 #!/bin/python3
 
-import time
 import json
-import requests
+import socket
+import time
+import typing as tp
+from contextlib import contextmanager
+from dataclasses import dataclass
 from pathlib import Path
 
-def getWeatherData(api_key):
-    url=f"https://api.openweathermap.org/data/2.5/weather?id=6173577&appid={api_key}&units=metric"
-    data=requests.get(url).text
-    decoder=json.JSONDecoder()
-    return decoder.decode(data)
+import requests
 
-if __name__=="__main__":
-    last_update=0
 
-    with open(Path.home()/".secrets/api/api.openweathermap.org") as key_file:
-        API_KEY=key_file.readline().strip()
+@dataclass(frozen=True)
+class WeatherApiResult:
+    sunrise: float  # Unix time
+    sunset: float  # Unix time
+    conditions: str  # description of weather conditions
+    temperature: float  # degrees Celsius
 
-    COULD_NOT_CONNECT="Could not connect to api.openweathermap.org"
-    REGULAR_UPDATE_INTERVAL=600 # 10 minutes
-    ERROR_UPDATE_INTERVAL=2 # 2 seconds
 
-    while True:
-        unix_time=time.time();
-        if(unix_time-last_update>REGULAR_UPDATE_INTERVAL or 
-                (weather_data==COULD_NOT_CONNECT and 
-                    unix_time-last_update>ERROR_UPDATE_INTERVAL)):
-            try:
-                weather_data=getWeatherData(API_KEY)
-            except Exception:
-                weather_data=COULD_NOT_CONNECT
-            last_update=unix_time
+class WeatherApi:
+    def __init__(
+        self, api_key: str, regular_update_interval: int, error_update_interval: int
+    ):
+        self.api_key = api_key
+        self.regular_update_interval = regular_update_interval
+        self.error_update_interval = error_update_interval
+        self._last_update: float = 0
+        self._cached_result: tp.Optional[WeatherApiResult] = None
 
-        time_str=time.strftime('%a %Y-%m-%d %H:%M', time.localtime(unix_time))
-        if not isinstance(weather_data,str):
-            sunrise_str=time.strftime('%H:%M', time.localtime(weather_data["sys"]["sunrise"]))
-            sunset_str=time.strftime('%H:%M', time.localtime(weather_data["sys"]["sunset"]))
-            conditions=weather_data["weather"][0]["description"]
-            temperature=weather_data["main"]["temp"]
-            wind_speed=weather_data["wind"]["speed"]
-            output="%s | %d °C | %.2g m/s | %s | %s | %s "%(
-                conditions,
-                temperature,
-                wind_speed,
-                sunrise_str,
-                sunset_str,
-                time_str)
+    def _fetch_data(self) -> tp.Optional[WeatherApiResult]:
+        try:
+            url = f"https://api.openweathermap.org/data/2.5/weather?id=6173577&appid={self.api_key}&units=metric"
+            data = requests.get(url).text
+            d = json.loads(data)
+            return WeatherApiResult(
+                sunrise=d["sys"]["sunrise"],
+                sunset=d["sys"]["sunset"],
+                conditions=d["weather"][0]["description"],
+                temperature=d["main"]["temp"],
+            )
+        except Exception:
+            return None
+
+    def get_data(self) -> tp.Optional[WeatherApiResult]:
+        unix_time = time.time()
+        if unix_time - self._last_update > self.regular_update_interval or (
+            self._cached_result is None
+            and unix_time - self._last_update > self.error_update_interval
+        ):
+            self._cached_result = self._fetch_data()
+            self._last_update = unix_time
+        return self._cached_result
+
+
+class DiagonatorApi:
+    def __init__(self, server_socket: socket.socket):
+        self.server_socket = server_socket
+
+    @classmethod
+    @contextmanager
+    def open(cls, socket_path: str) -> tp.Generator["DiagonatorApi", None, None]:
+        with socket.socket(socket.AF_UNIX, socket.SOCK_STREAM) as server_socket:
+            server_socket.connect(socket_path)
+            yield cls(server_socket)
+
+    def _get_response(self, request: tp.Dict[str, tp.Any]) -> tp.Any:
+        self.server_socket.sendall(
+            json.dumps(request).encode() + b"\n"
+        )  # note that the newline ("\n") is required in order to mark the end of the request
+        response = b""
+        while b"\n" not in response:
+            response += self.server_socket.recv(1024)
+        return json.loads(response)
+
+    def get_str(self) -> str:
+        response = self._get_response({"type": "GetInfo"})
+        if response["type"] == "Info":
+            unix_time = int(time.time())
+
+            def fmt_remaining_time(t: int) -> str:
+                duration = t - unix_time
+                minutes = duration // 60
+                return f"{minutes} minute{'s'[:minutes!=1]} remaining"
+
+            def fmt_start_time(t: tp.Optional[int]) -> str:
+                if t is None:
+                    return "start of day"
+                else:
+                    return time.strftime("%H:%M", time.localtime(t))
+
+            def fmt_end_time(t: tp.Optional[int]) -> str:
+                if t is None:
+                    return "end of day"
+                else:
+                    return time.strftime("%H:%M", time.localtime(t))
+
+            info = response["info"]
+
+            if info["state"] == "Unlockable":
+                msg = "Session is unlockable"
+            elif info["state"] == "Locked":
+                msg = "Session is locked"
+            else:
+                assert info["state"] == "Unlocked"
+                msg = "Session is unlocked"
+
+            if info["reason"]["type"] == "BreakTimer":
+                msg += f": {fmt_remaining_time(info['until'])}"
+            else:
+                msg += f" until {fmt_end_time(info['until'])}"
+
+            if info["reason"]["type"] == "RequirementNotMet":
+                req_id = info["reason"]["id"]
+                req = next(req for req in info["requirements"] if req["id"] == req_id)
+                msg += f" (requirement \"{req['name']}\" due at {fmt_start_time(req['due'])})"
+            elif info["reason"]["type"] == "LockedTimeRange":
+                ltr_id = info["reason"]["id"]
+                ltr = next(
+                    ltr for ltr in info["locked_time_ranges"] if ltr["id"] == ltr_id
+                )
+                msg += f" (locked time range from {fmt_start_time(ltr['start'])} to {fmt_end_time(ltr['end'])})"
+            return msg
         else:
-            output="%s | %s "%(weather_data,time_str)
+            assert response["type"] == "Error"
+            msg = response["msg"]
+            return msg
 
-        print(output,flush=True)
-        time.sleep(0.1)
+
+if __name__ == "__main__":
+    with open(Path.home() / ".secrets/api/api.openweathermap.org") as key_file:
+        api_key = key_file.readline().strip()
+
+    weather_api = WeatherApi(
+        api_key=api_key, regular_update_interval=600, error_update_interval=2
+    )
+
+    def get_weather_str() -> str:
+        d = weather_api.get_data()
+        if d is not None:
+            sunrise_str = time.strftime("%H:%M", time.localtime(d.sunrise))
+            sunset_str = time.strftime("%H:%M", time.localtime(d.sunset))
+            return f"{d.conditions} | {d.temperature:.0f} °C | {sunrise_str} | {sunset_str}"
+        else:
+            return "Could not connect to api.openweathermap.org"
+
+    with DiagonatorApi.open("/tmp/diagonator-server.sock") as diagonator_api:
+        while True:
+            weather_str = get_weather_str()
+            time_str = time.strftime("%a %Y-%m-%d %H:%M", time.localtime())
+            diagonator_str = diagonator_api.get_str()
+            print(f"{diagonator_str} | {weather_str} | {time_str} ", flush=True)
+            time.sleep(0.1)
