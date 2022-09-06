@@ -23,8 +23,12 @@ due = "20:00"
 name = "Start flossing"
 due = "20:00"
 
+[[requirements]]
+name = "Target bedtime"
+due = "21:00"
+
 [[locked_time_ranges]]
 end = "04:30"
 
 [[locked_time_ranges]]
-start = "21:30"
+start = "22:00"
