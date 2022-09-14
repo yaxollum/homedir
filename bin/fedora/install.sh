@@ -16,6 +16,11 @@ EOF
 cat > /etc/samba/smb.conf <<EOF
 [global]
     client min protocol = NT1
+  server min protocol = SMB2_02
+[phone]
+  path = /home/yaxollum/Videos/phone_vids
+  writable = yes
+read only = no
 EOF
 
 if ! grep -q "Samba" /etc/fstab; then
