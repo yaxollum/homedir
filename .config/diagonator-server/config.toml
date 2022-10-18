@@ -8,6 +8,10 @@ work_period_minutes = 25
 break_minutes = 5
 
 [[requirements]]
+name = "Prepare to leave"
+due = "8:10"
+
+[[requirements]]
 name = "Brush teeth"
 due = "20:00"
 
@@ -27,8 +31,14 @@ due = "20:00"
 name = "Target bedtime"
 due = "21:00"
 
+[[requirements]]
+name = "Target bedtime 2"
+due = "22:00"
+
+[[requirements]]
+name = "Target bedtime 3"
+due = "23:00"
+
 [[locked_time_ranges]]
 end = "04:30"
 
-[[locked_time_ranges]]
-start = "22:00"
