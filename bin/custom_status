@@ -106,7 +106,7 @@ class DiagonatorApi:
                 assert info["state"] == "Unlocked"
                 msg = "Session is unlocked"
 
-            if info["reason"]["type"] == "BreakTimer":
+            if info["reason"]["type"] == "BreakTimer" and info["until"] is not None:
                 msg += f": {fmt_remaining_time(info['until'])}"
             else:
                 msg += f" until {fmt_end_time(info['until'])}"
