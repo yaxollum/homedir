@@ -13,32 +13,33 @@ due = "8:10"
 
 [[requirements]]
 name = "Brush teeth"
-due = "20:00"
+due = "19:30"
 
 [[requirements]]
 name = "Wash face"
-due = "20:00"
+due = "19:30"
 
 [[requirements]]
 name = "Prepare bread"
-due = "20:00"
+due = "19:30"
 
 [[requirements]]
 name = "Start flossing"
-due = "20:00"
+due = "19:30"
 
 [[requirements]]
 name = "Target bedtime"
-due = "21:00"
+due = "20:30"
 
 [[requirements]]
 name = "Target bedtime 2"
-due = "22:00"
+due = "21:30"
 
 [[requirements]]
 name = "Target bedtime 3"
-due = "23:00"
+due = "22:30"
 
-[[locked_time_ranges]]
-end = "04:30"
+[[requirements]]
+name = "Target bedtime 4"
+due = "23:30"
 
