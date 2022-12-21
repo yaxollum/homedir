@@ -16,4 +16,8 @@
         }
     },
     "python.formatting.provider": "black",
+    "haskell.manageHLS": "GHCup",
+    "[haskell]": {
+        "editor.defaultFormatter": "haskell.haskell"
+    },
 }
