@@ -1,2 +1,12 @@
-#!/bin/bash
-firefox -P 'idle'
+#!/bin/python
+
+import datetime
+import subprocess
+
+d = datetime.date.today()
+if d.day % 3 == 0 and not (d.year == 2023 and d.month == 1 and d.day == 6):
+    prof = "idle"
+else:
+    prof = "the lab"
+
+subprocess.run(["firefox", "-P", prof])
