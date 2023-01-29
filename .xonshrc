@@ -12,8 +12,6 @@ def lx(expr):
     return list(lexer)
 $COMPLETIONS_CONFIRM=True
 $PROMPT='{BOLD_BLUE}{cwd_base}{branch_color}{curr_branch: {}}{RESET} {RED}{last_return_code_if_nonzero:[{BOLD_INTENSE_RED}{}{RED}] }{RESET}{BOLD_BLUE}{prompt_end}{RESET} '
-$GDK_SCALE=2
-$GDK_DPI_SCALE=0.5
 $CHROME_EXECUTABLE='/usr/bin/google-chrome-stable'
 #$SHELL_TYPE='readline'
 $CARGO_INSTALL_ROOT='/home/yaxollum/.local'

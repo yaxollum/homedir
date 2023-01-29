@@ -3,10 +3,10 @@
 import datetime
 import subprocess
 
-d = datetime.date.today()
-if d.day % 3 == 0 and not (d.year == 2023 and d.month == 1 and d.day == 6):
+d = datetime.datetime.now()
+if d.hour >= 19:
     prof = "idle"
 else:
-    prof = "the lab"
+    prof = "lab"
 
-subprocess.run(["firefox", "-P", prof])
+subprocess.run(["flatpak","run","org.mozilla.firefox", "-P", prof])
