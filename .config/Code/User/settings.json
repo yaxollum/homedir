@@ -1,34 +1,37 @@
 {
-    "editor.fontSize": 17,
-    "editor.fontFamily": "DejaVu Sans Mono",
-    "workbench.colorTheme": "Solarized Light",
-    "editor.formatOnSave": true,
-    "workbench.editor.enablePreview": false,
-    "editor.renderWhitespace": "none",
-    "editor.minimap.enabled": false,
-    "html.format.enable": false,
-    "files.insertFinalNewline": true,
-    "extensions.ignoreRecommendations": true,
-    "files.hotExit": "off",
-    "[python]": {
-        "editor.codeActionsOnSave": {
-            "source.organizeImports": true
-        }
-    },
-    "python.formatting.provider": "black",
-    "haskell.manageHLS": "GHCup",
-    "[haskell]": {
-        "editor.defaultFormatter": "haskell.haskell",
-        "editor.quickSuggestions": {
-            "comments": "off",
-            "strings": "off",
-            "other": "off"
-        }
-    },
-    "[javascript]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-    "[typescript]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
+  "editor.fontSize": 17,
+  "editor.fontFamily": "DejaVu Sans Mono",
+  "workbench.colorTheme": "Solarized Light",
+  "workbench.editor.enablePreview": false,
+  "editor.renderWhitespace": "none",
+  "editor.minimap.enabled": false,
+  "html.format.enable": false,
+  "files.insertFinalNewline": true,
+  "extensions.ignoreRecommendations": true,
+  "files.hotExit": "off",
+  "[python]": {
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": true
     }
+  },
+  "python.formatting.provider": "black",
+  "haskell.manageHLS": "GHCup",
+  "[haskell]": {
+    "editor.defaultFormatter": "haskell.haskell",
+    "editor.quickSuggestions": {
+      "comments": "off",
+      "strings": "off",
+      "other": "off"
+    }
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[scss]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "editor.formatOnSave": true
 }

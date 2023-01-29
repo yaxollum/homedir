@@ -29,17 +29,13 @@ due = "19:30"
 
 [[requirements]]
 name = "Target bedtime"
-due = "20:30"
-
-[[requirements]]
-name = "Target bedtime 2"
 due = "21:30"
 
 [[requirements]]
-name = "Target bedtime 3"
+name = "Target bedtime 2"
 due = "22:30"
 
 [[requirements]]
-name = "Target bedtime 4"
+name = "Target bedtime 3"
 due = "23:30"
 
