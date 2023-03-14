@@ -4,8 +4,8 @@ diagonator_args = [
     "50",
 ]
 socket_path = "/tmp/diagonator-server.sock"
-work_period_minutes = 25
-break_minutes = 5
+work_period_minutes = 30
+break_minutes = 1
 
 [[requirements]]
 name = "Prepare to leave"
