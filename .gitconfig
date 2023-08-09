@@ -1,7 +1,7 @@
 [user]
 	email = yaxollum@gmail.com
 	name = Peter Ye
-	signingkey = 2D89B82D27D2FC34837EBC93FE5DE7CD0E2FB900
+	signingkey = 9A4ED20A5F3F8C0112C4B1EF86211039C3223EF7
 [commit]
 	gpgsign = true
 [core]
