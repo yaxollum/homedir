@@ -19,4 +19,4 @@ export XMODIFIERS='@im=fcitx5'
 export GDK_SCALE=2
 export GDK_DPI_SCALE=0.5
 
-PATH=~/bin:~/.local/bin:~/.local/share/gem/ruby/3.0.0/bin:~/.ghcup/bin:$PATH
+PATH=~/bin:~/.local/bin:~/.local/share/gem/ruby/3.0.0/bin:~/.ghcup/bin:~/Qt/Tools/QtCreator/bin:$PATH
