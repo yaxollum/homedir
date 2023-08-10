@@ -1,5 +1,7 @@
 #!/bin/bash
 
+echo "blacklist pcspkr" >>/etc/modprobe.d/blacklist.conf
+
 cat > /etc/lightdm/lightdm.conf <<EOF
 [Seat:*]
 autologin-user=yaxollum
