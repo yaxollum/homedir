@@ -1,5 +1,6 @@
 import os
 from math import *
+from random import *
 from xonsh.ast import pprint_ast 
 from xonsh.lexer import Lexer
 import ast

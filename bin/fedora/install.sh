@@ -1,16 +1,9 @@
 #!/bin/bash
 
-./dnf.sh
-systemctl enable docker
-
-useradd yaxollum -G wheel,docker
-systemctl set-default graphical.target     
-
-echo 'PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/var/lib/flatpak/exports/bin"' > /etc/environment
-
 cat > /etc/lightdm/lightdm.conf <<EOF
 [Seat:*]
 autologin-user=yaxollum
+user-session=i3
 EOF
 
 cat > /etc/samba/smb.conf <<EOF
@@ -30,16 +23,3 @@ cat >> /etc/fstab <<EOF
 //192.168.0.121/Volume_2 /srv/smb/s2 cifs guest,vers=1.0,noauto,x-systemd.automount 0 0
 EOF
 fi
-
-cat > /usr/share/xsessions/qtile.desktop <<EOF
-[Desktop Entry]
-Name=Qtile
-Comment=Qtile Session
-Exec=qtile start
-Type=Application
-Keywords=wm;tiling
-EOF
-
-./install_xonsh.sh
-
-./flatpak.sh

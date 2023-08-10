@@ -1,2 +1,6 @@
 #!/bin/bash
-dnf install flatpak lightdm xmonad vim alacritty firefox htop docker google-noto-serif-cjk-ttc-fonts ibus ibus-rime nodejs
+dnf install flatpak lightdm gvim alacritty i3 google-noto-serif-cjk-ttc-fonts
+
+dnf groupinstall "Development Tools"
+
+dnf install fcitx5 fcitx5-hangul fcitx5-rime
