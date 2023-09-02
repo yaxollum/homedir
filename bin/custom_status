@@ -31,7 +31,7 @@ class WeatherApi:
 
     def _fetch_data(self) -> tp.Optional[WeatherApiResult]:
         try:
-            url = f"https://api.openweathermap.org/data/2.5/weather?id=6173577&appid={self.api_key}&units=metric"
+            url = f"https://api.openweathermap.org/data/2.5/weather?id=6176823&appid={self.api_key}&units=metric"
             data = requests.get(url).text
             d = json.loads(data)
             return WeatherApiResult(
@@ -99,12 +99,12 @@ class DiagonatorApi:
             info = response["info"]
 
             if info["state"] == "Unlockable":
-                msg = "Session is unlockable"
+                msg = "Unlockable"
             elif info["state"] == "Locked":
-                msg = "Session is locked"
+                msg = "Locked"
             else:
                 assert info["state"] == "Unlocked"
-                msg = "Session is unlocked"
+                msg = "Unlocked"
 
             if info["reason"]["type"] == "BreakTimer" and info["until"] is not None:
                 msg += f": {fmt_remaining_time(info['until'])}"
@@ -114,7 +114,7 @@ class DiagonatorApi:
             if info["reason"]["type"] == "RequirementNotMet":
                 req_id = info["reason"]["id"]
                 req = next(req for req in info["requirements"] if req["id"] == req_id)
-                msg += f" (requirement \"{req['name']}\" due at {fmt_start_time(req['due'])})"
+                msg += f" (\"{req['name']}\" due at {fmt_start_time(req['due'])})"
             elif info["reason"]["type"] == "LockedTimeRange":
                 ltr_id = info["reason"]["id"]
                 ltr = next(
@@ -141,7 +141,7 @@ if __name__ == "__main__":
         if d is not None:
             sunrise_str = time.strftime("%H:%M", time.localtime(d.sunrise))
             sunset_str = time.strftime("%H:%M", time.localtime(d.sunset))
-            return f"{d.conditions} | {d.temperature:.0f} °C | {sunrise_str} | {sunset_str}"
+            return f"{d.conditions} | {d.temperature:.0f} °C"
         else:
             return "Could not connect to api.openweathermap.org"
 
