@@ -11,3 +11,4 @@ if [ -e /home/yaxollum/.nix-profile/etc/profile.d/nix.sh ]; then . /home/yaxollu
 export SHELL=/usr/local/bin/xonsh
 export EDITOR=/usr/bin/vi
 setfont -d
+. "$HOME/.cargo/env"
