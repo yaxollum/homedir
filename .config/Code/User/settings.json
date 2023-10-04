@@ -34,5 +34,7 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "editor.formatOnSave": true,
-  "git.openRepositoryInParentFolders": "never"
+  "git.openRepositoryInParentFolders": "never",
+  "explorer.excludeGitIgnore": true,
+  "latex-workshop.latex.autoBuild.run": "onSave"
 }
