@@ -1,0 +1,54 @@
+#!/bin/python3
+
+import re
+import sys
+from pathlib import Path
+
+
+def get_course(dirname):
+    m = re.fullmatch(r"math(\d+)", dirname)
+    if m is not None:
+        return m.group(1)
+    else:
+        sys.exit("Unable to detect course.")
+
+
+def get_assignment(dirname):
+    m = re.fullmatch(r"A(\d+)", dirname)
+    if m is not None:
+        return m.group(1)
+    else:
+        sys.exit("Unable to detect assignment.")
+
+
+if len(sys.argv) != 2 or (re.fullmatch(r"\d+", sys.argv[1]) is None):
+    sys.exit("Expected question number as an argument.")
+
+question = sys.argv[1]
+
+cwd = Path.cwd().parts
+
+course = get_course(cwd[-2])
+assignment = get_assignment(cwd[-1])
+
+new_file = Path(f"a{assignment}q{question}_{course}.tex")
+
+if new_file.exists():
+    sys.exit(f'File "{new_file}" already exists.')
+
+with open(new_file, "w") as f:
+    print(
+        r"""\documentclass{article}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage[parfill]{parskip}
+\usepackage[margin=1in]{geometry}
+
+\begin{document}
+\section*{"""
+        + f"{assignment}.{question}"
+        + r"""}
+\end{document}""",
+        file=f,
+    )
