@@ -12,9 +12,10 @@
   "[python]": {
     "editor.codeActionsOnSave": {
       "source.organizeImports": true
-    }
+    },
+    "editor.defaultFormatter": "ms-python.black-formatter"
   },
-  "python.formatting.provider": "black",
+  "python.formatting.provider": "none",
   "haskell.manageHLS": "GHCup",
   "[haskell]": {
     "editor.defaultFormatter": "haskell.haskell",
