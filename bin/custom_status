@@ -82,7 +82,7 @@ class DiagonatorApi:
             def fmt_remaining_time(t: int) -> str:
                 duration = t - unix_time
                 minutes = duration // 60
-                return f"{minutes} minute{'s'[:minutes!=1]} remaining"
+                return f"{minutes} minute{'s'[:minutes!=1]}"
 
             def fmt_start_time(t: tp.Optional[int]) -> str:
                 if t is None:
@@ -97,19 +97,21 @@ class DiagonatorApi:
                     return time.strftime("%H:%M", time.localtime(t))
 
             info = response["info"]
+            if info["deactivated_until"] is None:
+                if info["state"] == "Unlockable":
+                    msg = "Unlockable"
+                elif info["state"] == "Locked":
+                    msg = "Locked"
+                else:
+                    assert info["state"] == "Unlocked"
+                    msg = "Unlocked"
 
-            if info["state"] == "Unlockable":
-                msg = "Unlockable"
-            elif info["state"] == "Locked":
-                msg = "Locked"
+                if info["reason"]["type"] == "BreakTimer" and info["until"] is not None:
+                    msg += f": {fmt_remaining_time(info['until'])}"
+                else:
+                    msg += f" until {fmt_end_time(info['until'])}"
             else:
-                assert info["state"] == "Unlocked"
-                msg = "Unlocked"
-
-            if info["reason"]["type"] == "BreakTimer" and info["until"] is not None:
-                msg += f": {fmt_remaining_time(info['until'])}"
-            else:
-                msg += f" until {fmt_end_time(info['until'])}"
+                msg = f"Deactivated: {fmt_remaining_time(info['deactivated_until'])}"
 
             if info["reason"]["type"] == "RequirementNotMet":
                 req_id = info["reason"]["id"]

@@ -200,6 +200,8 @@ mode "resize" {
 bindsym $mod+r exec spectacle -r
 bindsym $mod+F12 exec basic_client.py UnlockTimer
 bindsym $mod+F1 exec basic_client.py LockTimer
+bindsym $mod+F2 exec deactivate.py 900
+bindsym $mod+F3 exec deactivate.py 0
 bindsym $mod+Home exec systemctl suspend
 
 # Start i3bar to display a workspace bar (plus the system information i3status
