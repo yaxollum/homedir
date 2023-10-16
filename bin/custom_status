@@ -122,7 +122,7 @@ class DiagonatorApi:
                 ltr = next(
                     ltr for ltr in info["locked_time_ranges"] if ltr["id"] == ltr_id
                 )
-                msg += f" (locked time range from {fmt_start_time(ltr['start'])} to {fmt_end_time(ltr['end'])})"
+                msg += f" (LTR from {fmt_start_time(ltr['start'])} to {fmt_end_time(ltr['end'])})"
             return msg
         else:
             assert response["type"] == "Error"
