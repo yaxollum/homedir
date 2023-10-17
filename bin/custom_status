@@ -145,7 +145,7 @@ if __name__ == "__main__":
             sunset_str = time.strftime("%H:%M", time.localtime(d.sunset))
             return f"{d.conditions} | {d.temperature:.0f} °C"
         else:
-            return "Could not connect to api.openweathermap.org"
+            return "..."
 
     with DiagonatorApi.open("/tmp/diagonator-server.sock") as diagonator_api:
         while True:
