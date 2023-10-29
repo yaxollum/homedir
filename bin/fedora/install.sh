@@ -8,6 +8,11 @@ autologin-user=yaxollum
 user-session=i3
 EOF
 
+cat > /etc/udev/rules.d/90-usb-wakeup.rules <<EOF
+# Disable waking up from Logitech unified receiver
+ACTION=="add", SUBSYSTEM=="usb", DRIVERS=="usb", ATTRS{idVendor}=="046d", ATTRS{idProduct}=="c52b", ATTR{power/wakeup}="disabled"
+EOF
+
 cat > /etc/samba/smb.conf <<EOF
 [global]
     client min protocol = NT1
