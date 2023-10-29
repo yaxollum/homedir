@@ -61,9 +61,14 @@ class DiagonatorApi:
     @classmethod
     @contextmanager
     def open(cls, socket_path: str) -> tp.Generator["DiagonatorApi", None, None]:
-        with socket.socket(socket.AF_UNIX, socket.SOCK_STREAM) as server_socket:
-            server_socket.connect(socket_path)
-            yield cls(server_socket)
+        while True:
+            try:
+                with socket.socket(socket.AF_UNIX, socket.SOCK_STREAM) as server_socket:
+                    server_socket.connect(socket_path)
+                    yield cls(server_socket)
+            except Exception:
+                print("Waiting to connect to diagonator server ...", flush=True)
+                time.sleep(0.1)
 
     def _get_response(self, request: tp.Dict[str, tp.Any]) -> tp.Any:
         self.server_socket.sendall(
