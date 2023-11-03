@@ -7,6 +7,7 @@ import typing as tp
 from contextlib import contextmanager
 from dataclasses import dataclass
 from pathlib import Path
+from threading import Thread
 
 import requests
 
@@ -26,8 +27,8 @@ class WeatherApi:
         self.api_key = api_key
         self.regular_update_interval = regular_update_interval
         self.error_update_interval = error_update_interval
-        self._last_update: float = 0
         self._cached_result: tp.Optional[WeatherApiResult] = None
+        Thread(target=self._data_fetcher).start()
 
     def _fetch_data(self) -> tp.Optional[WeatherApiResult]:
         try:
@@ -43,14 +44,15 @@ class WeatherApi:
         except Exception:
             return None
 
-    def get_data(self) -> tp.Optional[WeatherApiResult]:
-        unix_time = time.time()
-        if unix_time - self._last_update > self.regular_update_interval or (
-            self._cached_result is None
-            and unix_time - self._last_update > self.error_update_interval
-        ):
+    def _data_fetcher(self):
+        while True:
             self._cached_result = self._fetch_data()
-            self._last_update = unix_time
+            if self._cached_result is None:
+                time.sleep(self.error_update_interval)
+            else:
+                time.sleep(self.regular_update_interval)
+
+    def get_data(self) -> tp.Optional[WeatherApiResult]:
         return self._cached_result
 
 
