@@ -52,6 +52,9 @@ class WeatherApi:
                 self._cached_result is None
                 and unix_time - last_update > self.error_update_interval
             ):
+                self._cached_result = (
+                    None  # invalidate cached result before fetching new data
+                )
                 self._cached_result = self._fetch_data()
                 last_update = unix_time
                 time.sleep(0.1)
