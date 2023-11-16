@@ -44,6 +44,10 @@ with open(new_file, "w") as f:
 \usepackage{amsfonts}
 \usepackage[parfill]{parskip}
 \usepackage[margin=1in]{geometry}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
 
 \begin{document}
 \section*{"""
