@@ -21,41 +21,38 @@ def get_assignment(dirname):
         sys.exit("Unable to detect assignment.")
 
 
-def write_to_file(ff, body_text):
-    if ff.exists():
-        sys.exit(f'File "{ff}" already exists.')
+if len(sys.argv) != 2 or (re.fullmatch(r"\d+", sys.argv[1]) is None):
+    sys.exit("Expected question number as an argument.")
 
-    with open(ff, "w") as f:
-        print(
-            r"""\documentclass{article}
+question = sys.argv[1]
+
+cwd = Path.cwd().parts
+
+course = get_course(cwd[-2])
+assignment = get_assignment(cwd[-1])
+
+new_file = Path(f"a{assignment}q{question}_{course}.tex")
+
+if new_file.exists():
+    sys.exit(f'File "{new_file}" already exists.')
+
+with open(new_file, "w") as f:
+    print(
+        r"""\documentclass{article}
 \usepackage{amsthm}
 \usepackage{amsmath}
 \usepackage{amsfonts}
 \usepackage[parfill]{parskip}
 \usepackage[margin=1in]{geometry}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
 
 \begin{document}
-"""
-            + body_text
-            + r"\end{document}",
-            file=f,
-        )
-
-
-if len(sys.argv) != 2:
-    sys.exit("Expected exactly one argument.")
-elif sys.argv[1].endswith(".tex"):
-    write_to_file(Path(sys.argv[1]), "")
-elif re.fullmatch(r"\d+", sys.argv[1]) is None:
-    sys.exit("Expected question number as an argument.")
-else:
-    question = sys.argv[1]
-
-    cwd = Path.cwd().parts
-
-    course = get_course(cwd[-2])
-    assignment = get_assignment(cwd[-1])
-
-    new_file = Path(f"a{assignment}q{question}_{course}.tex")
-    s = r"\section*{" + f"{assignment}.{question}" + "}\n"
-    write_to_file(new_file, s)
+\section*{"""
+        + f"{assignment}.{question}"
+        + r"""}
+\end{document}""",
+        file=f,
+    )
