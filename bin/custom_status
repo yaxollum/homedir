@@ -32,7 +32,7 @@ class WeatherApi:
 
     def _fetch_data(self) -> tp.Optional[WeatherApiResult]:
         try:
-            url = f"https://api.openweathermap.org/data/2.5/weather?id=6176823&appid={self.api_key}&units=metric"
+            url = f"https://api.openweathermap.org/data/2.5/weather?id=6173577&appid={self.api_key}&units=metric"
             data = requests.get(url, timeout=10).text
             d = json.loads(data)
             return WeatherApiResult(
