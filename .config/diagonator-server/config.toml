@@ -20,11 +20,11 @@ name = "Drink 2"
 due = "19:30"
 
 [[requirements]]
-name = "Brush teeth"
+name = "Floss"
 due = "20:00"
 
 [[requirements]]
-name = "Start flossing"
+name = "Brush teeth"
 due = "20:00"
 
 [[requirements]]
