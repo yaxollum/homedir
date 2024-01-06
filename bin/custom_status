@@ -22,8 +22,13 @@ class WeatherApiResult:
 
 class WeatherApi:
     def __init__(
-        self, api_key: str, regular_update_interval: int, error_update_interval: int
+        self,
+        location_id: int,
+        api_key: str,
+        regular_update_interval: int,
+        error_update_interval: int,
     ):
+        self.location_id = location_id
         self.api_key = api_key
         self.regular_update_interval = regular_update_interval
         self.error_update_interval = error_update_interval
@@ -32,7 +37,7 @@ class WeatherApi:
 
     def _fetch_data(self) -> tp.Optional[WeatherApiResult]:
         try:
-            url = f"https://api.openweathermap.org/data/2.5/weather?id=6173577&appid={self.api_key}&units=metric"
+            url = f"https://api.openweathermap.org/data/2.5/weather?id={self.location_id}&appid={self.api_key}&units=metric"
             data = requests.get(url, timeout=10).text
             d = json.loads(data)
             return WeatherApiResult(
@@ -148,8 +153,14 @@ if __name__ == "__main__":
     with open(Path.home() / ".secrets/api/api.openweathermap.org") as key_file:
         api_key = key_file.readline().strip()
 
+    WATERLOO = 6176823
+    VAUGHAN = 6173577
+
     weather_api = WeatherApi(
-        api_key=api_key, regular_update_interval=600, error_update_interval=2
+        location_id=WATERLOO,
+        api_key=api_key,
+        regular_update_interval=600,
+        error_update_interval=2,
     )
 
     def get_weather_str() -> str:
