@@ -11,7 +11,7 @@
   "files.hotExit": "off",
   "[python]": {
     "editor.codeActionsOnSave": {
-      "source.organizeImports": true
+      "source.organizeImports": "explicit"
     },
     "editor.defaultFormatter": "ms-python.black-formatter"
   },
@@ -37,5 +37,8 @@
   "editor.formatOnSave": true,
   "git.openRepositoryInParentFolders": "never",
   "explorer.excludeGitIgnore": true,
-  "latex-workshop.latex.autoBuild.run": "onSave"
+  "latex-workshop.latex.autoBuild.run": "onSave",
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
 }
