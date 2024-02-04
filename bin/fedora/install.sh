@@ -23,6 +23,23 @@ cat > /etc/samba/smb.conf <<EOF
 read only = no
 EOF
 
+cat > /etc/dnsmasq.conf <<EOF
+clear-on-reload
+
+address=/lichess.org/
+address=/chess.com/
+
+# Google
+server=8.8.8.8
+server=8.8.4.4
+server=2001:4860:4860::8888
+server=2001:4860:4860::8844
+
+# uwaterloo
+server=129.97.2.1
+server=129.97.2.2
+EOF
+
 if ! grep -q "Samba" /etc/fstab; then
 cat >> /etc/fstab <<EOF
 # Samba shares

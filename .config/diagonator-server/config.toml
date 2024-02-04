@@ -29,10 +29,10 @@ due = "20:00"
 
 [[requirements]]
 name = "Target bedtime"
-due = "22:00"
+due = "23:00"
 
 [[locked_time_ranges]]
 end = "7:00"
 
 [[locked_time_ranges]]
-start = "22:30"
+start = "23:30"
