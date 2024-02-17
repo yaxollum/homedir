@@ -62,7 +62,7 @@ class WeatherApi:
                 )
                 self._cached_result = self._fetch_data()
                 last_update = unix_time
-                time.sleep(0.1)
+            time.sleep(0.1)
 
     def get_data(self) -> tp.Optional[WeatherApiResult]:
         return self._cached_result
