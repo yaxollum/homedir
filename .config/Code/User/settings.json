@@ -40,5 +40,6 @@
   "latex-workshop.latex.autoBuild.run": "onSave",
   "[typescriptreact]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
-  }
+  },
+  "editor.stickyScroll.enabled": false
 }
