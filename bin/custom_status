@@ -157,7 +157,7 @@ if __name__ == "__main__":
     VAUGHAN = 6173577
 
     weather_api = WeatherApi(
-        location_id=WATERLOO,
+        location_id=VAUGHAN,
         api_key=api_key,
         regular_update_interval=600,
         error_update_interval=2,
