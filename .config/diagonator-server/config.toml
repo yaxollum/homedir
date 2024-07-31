@@ -32,7 +32,7 @@ name = "Target bedtime"
 due = "23:00"
 
 [[locked_time_ranges]]
-end = "7:00"
+end = "5:30"
 
 [[locked_time_ranges]]
 start = "23:30"
