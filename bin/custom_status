@@ -10,6 +10,7 @@ from pathlib import Path
 from threading import Thread
 
 import requests
+import socketio
 
 
 @dataclass(frozen=True)
@@ -49,8 +50,8 @@ class WeatherApi:
         except Exception:
             return None
 
-    def _data_fetcher(self):
-        last_update = 0
+    def _data_fetcher(self) -> None:
+        last_update: float = 0
         while True:
             unix_time = time.time()
             if unix_time - last_update > self.regular_update_interval or (
@@ -69,84 +70,72 @@ class WeatherApi:
 
 
 class DiagonatorApi:
-    def __init__(self, server_socket: socket.socket):
-        self.server_socket = server_socket
+    def __init__(self, server_url: str):
+        self.server_url = server_url
+        self._data = None
+        Thread(target=self._data_fetcher).start()
 
-    @classmethod
-    @contextmanager
-    def open(cls, socket_path: str) -> tp.Generator["DiagonatorApi", None, None]:
-        while True:
-            try:
-                with socket.socket(socket.AF_UNIX, socket.SOCK_STREAM) as server_socket:
-                    server_socket.connect(socket_path)
-                    yield cls(server_socket)
-            except Exception:
-                print("Waiting to connect to diagonator server ...", flush=True)
-                time.sleep(0.1)
-
-    def _get_response(self, request: tp.Dict[str, tp.Any]) -> tp.Any:
-        self.server_socket.sendall(
-            json.dumps(request).encode() + b"\n"
-        )  # note that the newline ("\n") is required in order to mark the end of the request
-        response = b""
-        while b"\n" not in response:
-            response += self.server_socket.recv(1024)
-        return json.loads(response)
+    def _data_fetcher(self) -> None:
+        with socketio.SimpleClient() as sio:
+            while True:
+                try:
+                    sio.connect(self.server_url)
+                    break
+                except Exception:
+                    time.sleep(0.1)
+            while True:
+                event = sio.receive()
+                if event[0] == "info_update":
+                    self._data = event[1]
 
     def get_str(self) -> str:
-        response = self._get_response({"type": "GetInfo"})
-        if response["type"] == "Info":
-            unix_time = int(time.time())
+        if self._data is None:
+            return "Waiting to connect to diagonator server ..."
+        info = self._data
+        unix_time = int(time.time())
 
-            def fmt_remaining_time(t: int) -> str:
-                duration = t - unix_time
-                minutes = duration // 60
-                return f"{minutes} minute{'s'[:minutes!=1]}"
+        def fmt_remaining_time(t: int) -> str:
+            duration = t - unix_time
+            minutes = duration // 60
+            return f"{minutes} minute{'s'[:minutes!=1]}"
 
-            def fmt_start_time(t: tp.Optional[int]) -> str:
-                if t is None:
-                    return "start of day"
-                else:
-                    return time.strftime("%H:%M", time.localtime(t))
-
-            def fmt_end_time(t: tp.Optional[int]) -> str:
-                if t is None:
-                    return "end of day"
-                else:
-                    return time.strftime("%H:%M", time.localtime(t))
-
-            info = response["info"]
-            if info["deactivated_until"] is None:
-                if info["state"] == "Unlockable":
-                    msg = "Unlockable"
-                elif info["state"] == "Locked":
-                    msg = "Locked"
-                else:
-                    assert info["state"] == "Unlocked"
-                    msg = "Unlocked"
-
-                if info["reason"]["type"] == "BreakTimer" and info["until"] is not None:
-                    msg += f": {fmt_remaining_time(info['until'])}"
-                else:
-                    msg += f" until {fmt_end_time(info['until'])}"
+        def fmt_start_time(t: tp.Optional[int]) -> str:
+            if t is None:
+                return "start of day"
             else:
-                msg = f"Deactivated: {fmt_remaining_time(info['deactivated_until'])}"
+                return time.strftime("%H:%M", time.localtime(t))
 
-            if info["reason"]["type"] == "RequirementNotMet":
-                req_id = info["reason"]["id"]
-                req = next(req for req in info["requirements"] if req["id"] == req_id)
-                msg += f" (\"{req['name']}\" due at {fmt_start_time(req['due'])})"
-            elif info["reason"]["type"] == "LockedTimeRange":
-                ltr_id = info["reason"]["id"]
-                ltr = next(
-                    ltr for ltr in info["locked_time_ranges"] if ltr["id"] == ltr_id
-                )
-                msg += f" (LTR from {fmt_start_time(ltr['start'])} to {fmt_end_time(ltr['end'])})"
-            return msg
+        def fmt_end_time(t: tp.Optional[int]) -> str:
+            if t is None:
+                return "end of day"
+            else:
+                return time.strftime("%H:%M", time.localtime(t))
+
+        if info["deactivated_until"] is None:
+            if info["state"] == "Unlockable":
+                msg = "Unlockable"
+            elif info["state"] == "Locked":
+                msg = "Locked"
+            else:
+                assert info["state"] == "Unlocked"
+                msg = "Unlocked"
+
+            if info["reason"]["type"] == "BreakTimer" and info["until"] is not None:
+                msg += f": {fmt_remaining_time(info['until'])}"
+            else:
+                msg += f" until {fmt_end_time(info['until'])}"
         else:
-            assert response["type"] == "Error"
-            msg = response["msg"]
-            return msg
+            msg = f"Deactivated: {fmt_remaining_time(info['deactivated_until'])}"
+
+        if info["reason"]["type"] == "RequirementNotMet":
+            req_id = info["reason"]["id"]
+            req = next(req for req in info["requirements"] if req["id"] == req_id)
+            msg += f" (\"{req['name']}\" due at {fmt_start_time(req['due'])})"
+        elif info["reason"]["type"] == "LockedTimeRange":
+            ltr_id = info["reason"]["id"]
+            ltr = next(ltr for ltr in info["locked_time_ranges"] if ltr["id"] == ltr_id)
+            msg += f" (LTR from {fmt_start_time(ltr['start'])} to {fmt_end_time(ltr['end'])})"
+        return msg
 
 
 if __name__ == "__main__":
@@ -172,10 +161,10 @@ if __name__ == "__main__":
         else:
             return "..."
 
-    with DiagonatorApi.open("/tmp/diagonator-server.sock") as diagonator_api:
-        while True:
-            weather_str = get_weather_str()
-            time_str = time.strftime("%a %Y-%m-%d %H:%M", time.localtime())
-            diagonator_str = diagonator_api.get_str()
-            print(f"{diagonator_str} | {weather_str} | {time_str} ", flush=True)
-            time.sleep(0.1)
+    diagonator_api = DiagonatorApi("http://localhost:3000")
+    while True:
+        weather_str = get_weather_str()
+        time_str = time.strftime("%a %Y-%m-%d %H:%M", time.localtime())
+        diagonator_str = diagonator_api.get_str()
+        print(f"{diagonator_str} | {weather_str} | {time_str} ", flush=True)
+        time.sleep(0.1)

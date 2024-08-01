@@ -223,6 +223,7 @@ exec --no-startup-id xsetroot
 exec --no-startup-id fcitx5 -d
 exec --no-startup-id xset s off -dpms
 exec --no-startup-id with-logger.py ~/.local/state/diagonator-server.log diagonator-server
+exec --no-startup-id diagonator-controller.py --top-margin 40
 
 #exec --no-startup-id hsetroot -fill ~/.wallpaper.png
 #exec --no-startup-id i3-msg workspace "abc"

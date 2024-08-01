@@ -1,9 +1,4 @@
-diagonator_path = "/home/yaxollum/.local/bin/diagonator"
-diagonator_args = [
-    "--top-margin",
-    "40",
-]
-socket_path = "/tmp/diagonator-server.sock"
+bind_on = "localhost:3000"
 work_period_minutes = 40
 break_minutes = 1
 
