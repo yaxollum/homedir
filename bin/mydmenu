@@ -1,0 +1,9 @@
+#!/usr/bin/sh
+exec $(echo "lab
+idle
+discord
+spotify
+ksysguard
+okular
+chromium
+gimp" | sort | dmenu "$@")
