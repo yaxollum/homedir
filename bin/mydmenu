@@ -5,5 +5,5 @@ discord
 spotify
 ksysguard
 okular
-chromium
+chromium-browser
 gimp" | sort | dmenu "$@")
