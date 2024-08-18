@@ -1,0 +1,50 @@
+#!/bin/bash
+
+if [ $# -ne 1 ]
+then
+    echo Expected one argument.
+    exit
+fi
+
+set -e
+mkdir $1
+cd $1
+dotnet new console
+cat > Program.cs << EOF
+using System;
+using System.Linq;
+using System.Collections.Generic;
+
+public class Program
+{
+    static Queue<int> input_nums = new Queue<int>();
+    static int ReadNum()
+    {
+        if (input_nums.Count == 0)
+        {
+            input_nums = new Queue<int>(Console.ReadLine().Split().Select(int.Parse));
+        }
+        return input_nums.Dequeue();
+    }
+    static IEnumerable<int> ReadNums(int n)
+    {
+        return Enumerable.Range(0, n).Select(_ => ReadNum());
+    }
+    public static void Main(string[] args)
+    {
+    }
+}
+EOF
+
+cat > "$1.csproj" << EOF
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <Nullable>disable</Nullable>
+  </PropertyGroup>
+
+</Project>
+EOF
