@@ -1,8 +1,8 @@
 import os
 from math import *
 from random import *
-from xonsh.ast import pprint_ast 
-from xonsh.lexer import Lexer
+from xonsh.parsers.ast import pprint_ast
+from xonsh.parsers.lexer import Lexer
 import ast
 
 ppa=lambda expr: pprint_ast(ast.parse(expr))
