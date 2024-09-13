@@ -7,4 +7,8 @@ ksysguard
 okular
 chromium-browser
 gimp
+calibre
+reboot
+poweroff
+intellij-idea-community
 plasma-systemmonitor" | sort | dmenu "$@")
