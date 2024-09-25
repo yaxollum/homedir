@@ -11,4 +11,8 @@ calibre
 reboot
 poweroff
 intellij-idea-community
+nomacs
+kdenlive
+vlc
+dolphin
 plasma-systemmonitor" | sort | dmenu "$@")
