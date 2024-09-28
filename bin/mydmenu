@@ -15,4 +15,5 @@ nomacs
 kdenlive
 vlc
 dolphin
+dbeaver
 plasma-systemmonitor" | sort | dmenu "$@")
