@@ -16,4 +16,5 @@ kdenlive
 vlc
 dolphin
 dbeaver
+xournalpp
 plasma-systemmonitor" | sort | dmenu "$@")
