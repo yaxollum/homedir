@@ -36,7 +36,7 @@ input_file_data = subprocess.run(
     ["pdftk", input_file, "dumpdata"], capture_output=True, text=True
 ).stdout
 
-page_count = int(re.match(r"NumberOfPages: (\d+)\n", input_file_data).group(1))
+page_count = int(re.search(r"NumberOfPages: (\d+)\n", input_file_data).group(1))
 if sum(l) != page_count:
     sys.exit(f"Provided list {l} does not match page count {page_count}")
 if len(l) != q_count:
