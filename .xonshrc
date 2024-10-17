@@ -30,5 +30,6 @@ aliases['g++']='g++ -std=c++20 -fmodules-ts -Wall -g'
 aliases['g++20h']='g++ -std=c++20 -fmodules-ts -c -x c++-system-header'
 aliases['fm']='launch_gui.sh dolphin .'
 aliases['okular']='launch_gui.sh okular'
+aliases['add_requirement']='python -m diagonator_clients.add_requirement'
 
 source ~/.xx
