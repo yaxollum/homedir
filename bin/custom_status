@@ -1,16 +1,16 @@
 #!/bin/python3
 
 import json
-import socket
+import sqlite3
 import time
 import typing as tp
-from contextlib import contextmanager
 from dataclasses import dataclass
 from pathlib import Path
 from threading import Thread
 
 import requests
 import socketio
+from diagonator_clients.utils import ANALYTICS_FILE, SERVER_URL, get_datetime_pair
 
 
 @dataclass(frozen=True)
@@ -76,6 +76,7 @@ class DiagonatorApi:
         Thread(target=self._data_fetcher).start()
 
     def _data_fetcher(self) -> None:
+        conn = sqlite3.connect(ANALYTICS_FILE)
         with socketio.SimpleClient() as sio:
             while True:
                 try:
@@ -86,6 +87,10 @@ class DiagonatorApi:
             while True:
                 event = sio.receive()
                 if event[0] == "info_update":
+                    event[1]["deactivate_count"] = conn.execute(
+                        "SELECT COUNT(*) FROM deactivate_log WHERE date = ?",
+                        get_datetime_pair()[:1],
+                    ).fetchone()[0]
                     self._data = event[1]
 
     def get_str(self) -> str:
@@ -125,7 +130,7 @@ class DiagonatorApi:
             else:
                 msg += f" until {fmt_end_time(info['until'])}"
         else:
-            msg = f"Deactivated: {fmt_remaining_time(info['deactivated_until'])}"
+            msg = f"Deactivation #{info['deactivate_count']}: {fmt_remaining_time(info['deactivated_until'])}"
 
         if info["reason"]["type"] == "RequirementNotMet":
             req_id = info["reason"]["id"]
@@ -155,13 +160,13 @@ if __name__ == "__main__":
     def get_weather_str() -> str:
         d = weather_api.get_data()
         if d is not None:
-            sunrise_str = time.strftime("%H:%M", time.localtime(d.sunrise))
-            sunset_str = time.strftime("%H:%M", time.localtime(d.sunset))
+            # sunrise_str = time.strftime("%H:%M", time.localtime(d.sunrise))
+            # sunset_str = time.strftime("%H:%M", time.localtime(d.sunset))
             return f"{d.conditions} | {d.temperature:.0f} °C"
         else:
             return "..."
 
-    diagonator_api = DiagonatorApi("http://localhost:3000")
+    diagonator_api = DiagonatorApi(SERVER_URL)
     while True:
         weather_str = get_weather_str()
         time_str = time.strftime("%a %Y-%m-%d %H:%M", time.localtime())
