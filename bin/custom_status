@@ -1,5 +1,6 @@
 #!/bin/python3
 
+import datetime
 import json
 import sqlite3
 import time
@@ -10,7 +11,7 @@ from threading import Thread
 
 import requests
 import socketio
-from diagonator_clients.utils import ANALYTICS_FILE, SERVER_URL, get_datetime_pair
+from diagonator_clients.utils import ANALYTICS_FILE, SERVER_URL
 
 
 @dataclass(frozen=True)
@@ -87,10 +88,27 @@ class DiagonatorApi:
             while True:
                 event = sio.receive()
                 if event[0] == "info_update":
-                    event[1]["deactivate_count"] = conn.execute(
-                        "SELECT COUNT(*) FROM deactivate_log WHERE date = ?",
-                        get_datetime_pair()[:1],
-                    ).fetchone()[0]
+                    four_oclock = 4 * 3600
+                    now = datetime.datetime.now()
+                    midnight = now.replace(hour=0, minute=0, second=0, microsecond=0)
+                    current_time = (now - midnight).seconds
+                    yesterday_date = (midnight - datetime.timedelta(days=1)).strftime(
+                        "%Y-%m-%d"
+                    )
+                    current_date = now.strftime("%Y-%m-%d")
+                    if current_time < four_oclock:
+                        event[1]["deactivate_count"] = conn.execute(
+                            f"""SELECT COUNT(*) FROM deactivate_log WHERE
+                            (date = ? AND time < {four_oclock}) OR
+                            (date = ? AND time >= {four_oclock})""",
+                            (current_date, yesterday_date),
+                        ).fetchone()[0]
+                    else:
+                        event[1]["deactivate_count"] = conn.execute(
+                            f"""SELECT COUNT(*) FROM deactivate_log WHERE
+                            (date = ? AND time >= {four_oclock})""",
+                            (current_date,),
+                        ).fetchone()[0]
                     self._data = event[1]
 
     def get_str(self) -> str:
