@@ -198,7 +198,7 @@ mode "resize" {
 
 bindsym $mod+r exec spectacle -r
 bindsym $mod+F11 exec python -m diagonator_clients.complete_requirement_dmenu -fn 'DejaVu Sans Mono-17'
-bindsym $mod+F12 exec python -m diagonator_clients.basic_client UnlockTimer
+bindsym $mod+F12 exec python -m diagonator_clients.unlock_timer_dmenu -b -fn 'DejaVu Sans Mono-17'
 bindsym $mod+F1 exec python -m diagonator_clients.basic_client LockTimer
 bindsym $mod+F2 exec python -m diagonator_clients.deactivate_dmenu 900 -b -fn 'DejaVu Sans Mono-17'
 bindsym $mod+Home exec systemctl suspend
