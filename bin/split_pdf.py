@@ -12,7 +12,10 @@ input_file = sys.argv[1]
 
 m = re.fullmatch(r"([a-z0-9]+_a\d+)_full.pdf", input_file)
 if m is None:
-    sys.exit("Unable to identify course/assignment number.")
+    sys.exit("Expected file name: <course>_a<number>_full.pdf")
+
+if not Path(input_file).exists():
+    sys.exit(f"File '{input_file}' does not exist")
 
 assignment = m.group(1)
 
