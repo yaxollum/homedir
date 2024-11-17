@@ -17,4 +17,5 @@ vlc
 dolphin
 dbeaver
 xournalpp
+evince
 plasma-systemmonitor" | sort | dmenu "$@")
