@@ -32,6 +32,7 @@ aliases['fm']='launch_gui.sh dolphin .'
 aliases['okular']='launch_gui.sh okular'
 aliases['evince']='launch_gui.sh evince'
 aliases['nomacs']='launch_gui.sh nomacs'
+aliases['cloc']='cloc --vcs=git'
 aliases['add_requirement']='python -m diagonator_clients.add_requirement'
 
 source ~/.xx
