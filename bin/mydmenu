@@ -1,6 +1,7 @@
 #!/usr/bin/sh
 exec $(echo "lab
 idle
+work
 discord
 spotify
 ksysguard
