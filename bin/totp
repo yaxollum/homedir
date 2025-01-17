@@ -1,0 +1,7 @@
+#!/bin/python3
+
+import subprocess
+
+s = input("Enter your TOTP secret: ")
+
+subprocess.run(["oathtool", "-b", "--totp", s])
