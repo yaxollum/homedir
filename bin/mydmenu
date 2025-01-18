@@ -19,4 +19,5 @@ dolphin
 dbeaver
 xournalpp
 evince
+remmina
 plasma-systemmonitor" | sort | dmenu "$@")
