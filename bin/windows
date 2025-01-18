@@ -1,0 +1,6 @@
+#!/bin/bash
+
+unset GDK_SCALE
+unset GDK_DPI_SCALE
+
+remmina
