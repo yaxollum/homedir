@@ -20,4 +20,5 @@ dbeaver
 xournalpp
 evince
 windows
+android
 plasma-systemmonitor" | sort | dmenu "$@")
