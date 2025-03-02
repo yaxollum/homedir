@@ -1,0 +1,2 @@
+#!/bin/bash
+boincmgr --password=$(cat /var/lib/boinc/gui_rpc_auth.cfg)

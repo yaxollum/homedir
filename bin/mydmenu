@@ -21,4 +21,5 @@ xournalpp
 evince
 windows
 android
+boinc
 plasma-systemmonitor" | sort | dmenu "$@")
