@@ -22,4 +22,5 @@ evince
 windows
 android
 boinc
+vbox
 plasma-systemmonitor" | sort | dmenu "$@")
